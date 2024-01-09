@@ -12,7 +12,7 @@ const moment = require('moment-timezone');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://Azraii_12:Kiri-12@cluster27.pgoifwj.mongodb.net/MuseumVisitorSystem";
+const uri = "mongodb+srv://Azraii_12:kifbpFm8bSQbvXQz@cluster27.pgoifwj.mongodb.net/?retryWrites=true&w=majority";
 const dbName = "MuseumVisitorSystem";
 
 const options = {
