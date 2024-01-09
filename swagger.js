@@ -162,9 +162,9 @@
  *               citizenship:
  *                 type: string
  *                 description: "Visitor's citizenship"
- *               visitorAddress:
+ *               visitorpass:
  *                 type: string
- *                 description: "Visitor's address"
+ *                 description: "Visitor's pass"
  *               phoneNo:
  *                 type: string
  *                 description: "Visitor's phone number"
@@ -243,9 +243,9 @@
  *               citizenship:
  *                 type: string
  *                 description: "Visitor's citizenship"
- *               visitorAddress:
+ *               visitorpass:
  *                 type: string
- *                 description: "Visitor's address"
+ *                 description: "Visitor's pass"
  *               phoneNo:
  *                 type: string
  *                 description: "Visitor's phone number"
@@ -353,9 +353,9 @@
  *                   citizenship:
  *                     type: string
  *                     description: "Visitor's citizenship"
- *                   visitorAddress:
+ *                   visitorpass:
  *                     type: string
- *                     description: "Visitor's address"
+ *                     description: "Visitor's pass"
  *                   phoneNo:
  *                     type: string
  *                     description: "Visitor's phone number"
@@ -372,9 +372,6 @@
  *                   purpose:
  *                     type: string
  *                     description: "Purpose of the visit"
- *                   registeredBy:
- *                     type: string
- *                     description: "Username of the user who registered the visitor."
  *       500:
  *         description: "Internal Server Error"
  *         content:
@@ -611,7 +608,7 @@
  *   post:
  *     tags:
  *       - Visitor
- *       - User
+ *       - Security
  *     summary: "Check-in Visitor"
  *     description: "Check-in a visitor by visit ID."
  *     security:
@@ -659,7 +656,7 @@
  *   patch:
  *     tags:
  *       - Visitor
- *       - User
+ *       - Security
  *     summary: "Check-out Visitor"
  *     description: "Check-out a visitor by visit ID."
  *     security:
