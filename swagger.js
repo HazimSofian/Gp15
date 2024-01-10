@@ -609,8 +609,8 @@
  *     tags:
  *       - Visitor
  *       - Security
- *     summary: "Check-in Visitor"
- *     description: "Check-in a visitor by providing visitor details."
+ *     summary: "Check-In Visitor"
+ *     description: "Record check-in details for a visitor."
  *     security:
  *       - BearerAuth: []
  *     requestBody:
@@ -622,42 +622,26 @@
  *             properties:
  *               visitorpass:
  *                 type: string
- *                 description: "Visitor pass for verification"
+ *                 description: "Visitor pass for identification."
  *               vehicleNo:
  *                 type: string
- *                 description: "Vehicle number for verification"
+ *                 description: "Vehicle number associated with the visitor."
  *               visitorName:
  *                 type: string
- *                 description: "Visitor name for verification"
+ *                 description: "Name of the visitor."
  *             required:
  *               - visitorpass
  *               - vehicleNo
  *               - visitorName
  *     responses:
- *       200:
- *         description: "Check-in recorded successfully"
- *       400:
- *         description: "Bad Request - Invalid visitor details"
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   description: "Error message"
- *       404:
- *         description: "Visitor not found"
- *       500:
- *         description: "Internal Server Error"
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   description: "Error message"
+ *       '200':
+ *         description: "Check-in recorded successfully."
+ *       '400':
+ *         description: "Bad request. Missing required fields or visitor not found."
+ *       '401':
+ *         description: "Unauthorized. Invalid token."
+ *       '500':
+ *         description: "Internal Server Error."
  */
 
 /**
@@ -667,8 +651,8 @@
  *     tags:
  *       - Visitor
  *       - Security
- *     summary: "Check-out Visitor"
- *     description: "Check-out a visitor by providing visitor details."
+ *     summary: "Record checkout for a visitor"
+ *     description: "Record checkout time for a visitor in the Museum Visitor Management System."
  *     security:
  *       - BearerAuth: []
  *     requestBody:
@@ -680,41 +664,25 @@
  *             properties:
  *               visitorpass:
  *                 type: string
- *                 description: "Visitor pass for verification"
+ *                 description: "Visitor pass for identification."
  *               vehicleNo:
  *                 type: string
- *                 description: "Vehicle number for verification"
+ *                 description: "Vehicle number associated with the visitor."
  *               visitorName:
  *                 type: string
- *                 description: "Visitor name for verification"
- *             required:
- *               - visitorpass
- *               - vehicleNo
- *               - visitorName
+ *                 description: "Name of the visitor."
  *     responses:
  *       200:
- *         description: "Checkout recorded successfully"
+ *         description: "Checkout recorded successfully."
+ *         content:
+ *           application/json:
+ *             example:
+ *               message: "Checkout recorded for visitor: John Doe. Checkout time: 2024-01-10 15:30:00"
  *       400:
- *         description: "Bad Request - Invalid visitor details"
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   description: "Error message"
+ *         description: "Bad request. Visitor not found or missing required fields."
  *       404:
- *         description: "Visitor not found"
+ *         description: "Visitor not found."
  *       500:
- *         description: "Internal Server Error"
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   description: "Error message"
+ *         description: "Internal Server Error."
  */
 

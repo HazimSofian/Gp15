@@ -67,14 +67,17 @@ const client = new MongoClient(uri,{
         return {
           user: matchuser,
         };
+      }
+
+      const passwordMatch = await bcrypt.compare(reqPassword, matchuser.Password);
+
+      if (passwordMatch) {
+        return {
+          user: matchuser,
+        };
       } else {
         throw new Error('Invalid password');
       }
-
-      if (!(await bcrypt.compare(password, user.password || ''))) {
-        return res.status(401).send('Invalid credentials');
-      }
-
     } catch (error) {
       console.error('Login Error:', error);
       throw new Error('An error occurred during login.');
@@ -134,14 +137,16 @@ async function registerAdmin(reqAdminUsername, reqAdminPassword, reqAdminName, r
         user: matchuser,
         token: token,
        };
+     }
+     const passwordMatch = await bcrypt.compare(reqPassword, matchuser.Password);
+
+     if (passwordMatch) {
+       return {
+         user: matchuser,
+       };
      } else {
        throw new Error('Invalid password');
      }
-    
-     if (!(await bcrypt.compare(password, user.password || ''))) {
-      return res.status(401).send('Invalid credentials');
-    }
-
    } catch (error) {
      console.error('Login Error:', error);
      throw new Error('An error occurred during login.');
@@ -171,14 +176,17 @@ async function registerAdmin(reqAdminUsername, reqAdminPassword, reqAdminName, r
          user: matchuser,
          token: token,
         };
+      }
+
+      const passwordMatch = await bcrypt.compare(reqPassword, matchuser.Password);
+
+      if (passwordMatch) {
+        return {
+          user: matchuser,
+        };
       } else {
         throw new Error('Invalid password');
       }
-
-      if (!(await bcrypt.compare(password, user.password || ''))) {
-        return res.status(401).send('Invalid credentials');
-      }
-  
     } catch (error) {
       console.error('Login Error:', error);
       throw new Error('An error occurred during login.');
