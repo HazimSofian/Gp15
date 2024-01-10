@@ -138,7 +138,7 @@ async function registerAdmin(reqAdminUsername, reqAdminPassword, reqAdminName, r
         token: token,
        };
      }
-     const passwordMatch = await bcrypt.compare(reqPassword, matchuser.Password);
+     const passwordMatch = await bcrypt.compare(reqAdminPassword, matchuser.Password);
 
      if (passwordMatch) {
        return {
@@ -178,7 +178,7 @@ async function registerAdmin(reqAdminUsername, reqAdminPassword, reqAdminName, r
         };
       }
 
-      const passwordMatch = await bcrypt.compare(reqPassword, matchuser.Password);
+      const passwordMatch = await bcrypt.compare(reqSecurityPassword, matchuser.Password);
 
       if (passwordMatch) {
         return {
