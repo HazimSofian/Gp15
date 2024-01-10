@@ -610,7 +610,7 @@
  *       - Visitor
  *       - Security
  *     summary: "Check-in Visitor"
- *     description: "Check-in a visitor by visit ID."
+ *     description: "Check-in a visitor by providing visitor details."
  *     security:
  *       - BearerAuth: []
  *     requestBody:
@@ -620,14 +620,24 @@
  *           schema:
  *             type: object
  *             properties:
- *               visitDetailId:
+ *               visitorpass:
  *                 type: string
- *                 description: "ID of the visit detail to check-in"
+ *                 description: "Visitor pass for verification"
+ *               vehicleNo:
+ *                 type: string
+ *                 description: "Vehicle number for verification"
+ *               visitorName:
+ *                 type: string
+ *                 description: "Visitor name for verification"
+ *             required:
+ *               - visitorpass
+ *               - vehicleNo
+ *               - visitorName
  *     responses:
  *       200:
- *         description: "Visitor checked-in successfully"
+ *         description: "Check-in recorded successfully"
  *       400:
- *         description: "Bad Request - Invalid visit ID"
+ *         description: "Bad Request - Invalid visitor details"
  *         content:
  *           application/json:
  *             schema:
@@ -637,7 +647,7 @@
  *                   type: string
  *                   description: "Error message"
  *       404:
- *         description: "Visit not found"
+ *         description: "Visitor not found"
  *       500:
  *         description: "Internal Server Error"
  *         content:
@@ -652,26 +662,40 @@
 
 /**
  * @swagger
- * /checkout/{visitDetailId}:
- *   patch:
+ * /checkout:
+ *   post:
  *     tags:
  *       - Visitor
  *       - Security
  *     summary: "Check-out Visitor"
- *     description: "Check-out a visitor by visit ID."
+ *     description: "Check-out a visitor by providing visitor details."
  *     security:
  *       - BearerAuth: []
- *     parameters:
- *       - name: visitDetailId
- *         in: path
- *         description: "ID of the visit detail to check-out"
- *         required: true
- *         type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               visitorpass:
+ *                 type: string
+ *                 description: "Visitor pass for verification"
+ *               vehicleNo:
+ *                 type: string
+ *                 description: "Vehicle number for verification"
+ *               visitorName:
+ *                 type: string
+ *                 description: "Visitor name for verification"
+ *             required:
+ *               - visitorpass
+ *               - vehicleNo
+ *               - visitorName
  *     responses:
  *       200:
- *         description: "Visitor checked-out successfully"
+ *         description: "Checkout recorded successfully"
  *       400:
- *         description: "Bad Request - Invalid visit ID"
+ *         description: "Bad Request - Invalid visitor details"
  *         content:
  *           application/json:
  *             schema:
@@ -681,7 +705,7 @@
  *                   type: string
  *                   description: "Error message"
  *       404:
- *         description: "Visit not found"
+ *         description: "Visitor not found"
  *       500:
  *         description: "Internal Server Error"
  *         content:
